@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Benfaremo - CV - 2026.2</title>
+  <style>
+    :root {
+      --yellow: #FFD21C;
+      --ink: #111111;
+      --muted: #6f6f6f;
+      --paper: #f7f5ef;
+      --line: #d8d4c8;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #d9d9d9;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    body {
+      padding: 32px 0 60px
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: rgba(17, 17, 17, .94);
+      color: #fff;
+      border-radius: 999px;
+      padding: 8px 10px 8px 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+    }
+
+    .toolbar__meta {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .8
+    }
+
+    .toolbar__actions {
+      display: flex;
+      gap: 8px
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .btn-lang {
+      background: #2b2b2b;
+      color: #fff
+    }
+
+    .btn-lang.active {
+      background: var(--yellow);
+      color: #111
+    }
+
+    .btn-print {
+      background: #fff;
+      color: #111
+    }
+
+    .document {
+      width: 210mm;
+      margin: 0 auto
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      background: var(--paper);
+      margin: 0 auto 18px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .16);
+    }
+
+    .page:last-child {
+      page-break-after: auto
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: 26mm 1fr;
+      height: 100%;
+    }
+
+    .rail {
+      border-right: 1px solid var(--line);
+      position: relative;
+      padding: 16mm 5mm 12mm;
+    }
+
+    .rail .index {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .rail .vertical {
+      position: absolute;
+      bottom: 14mm;
+      left: 7mm;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .rail .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      position: absolute;
+      top: 16mm;
+      right: -4.5px;
+    }
+
+    .content {
+      padding: 13mm 14mm 11mm 12mm;
+      height: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 38mm;
+      gap: 10mm;
+      align-items: start;
+    }
+
+    .kicker {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8mm;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: .88;
+      margin: 0;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+
+    .role {
+      margin-top: 5mm;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+      max-width: 120mm;
+    }
+
+    .role span {
+      font-weight: 400;
+      color: var(--muted)
+    }
+
+    .badge {
+      width: 38mm;
+      height: 38mm;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+
+    .statement-wrap {
+      min-height: 46mm;
+      display: flex;
+      align-items: center;
+      margin-top: 4mm;
+      margin-bottom: 5mm;
+      position: relative;
+    }
+
+    .statement {
+      font-size: 26px;
+      line-height: 1.06;
+      letter-spacing: -.035em;
+      font-weight: 800;
+      max-width: 145mm;
+    }
+
+    .statement em {
+      font-style: normal;
+      background: linear-gradient(transparent 55%, var(--yellow) 55%);
+    }
+
+    .meta-row {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 3mm 0;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1.2fr;
+      gap: 8mm;
+      margin-bottom: 5mm;
+      font-size: 9.5px;
+      line-height: 1.45;
+    }
+
+    .meta-row strong {
+      display: block;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 1.4mm;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 32mm 1fr;
+      gap: 8mm;
+      padding-top: 4.5mm;
+      margin-top: 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .section+.section {
+      margin-top: 5.5mm
+    }
+
+    .section__num {
+      font-size: 42px;
+      line-height: .9;
+      font-weight: 900;
+      letter-spacing: -.07em;
+    }
+
+    .section__num span {
+      display: block;
+      font-size: 8px;
+      line-height: 1.2;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-top: 2mm;
+      color: var(--muted);
+    }
+
+    .section__body h2 {
+      font-size: 15px;
+      margin: 0 0 2.5mm;
+      letter-spacing: -.02em;
+    }
+
+    .section__body p {
+      font-size: 10.1px;
+      line-height: 1.48;
+      margin: 0 0 2.6mm;
+    }
+
+    .experience-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8mm;
+      align-items: end;
+      margin-bottom: 3mm;
+    }
+
+    .experience-head h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .experience-head .date {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      font-size: 9.8px;
+      font-weight: 700;
+      margin-bottom: 2.5mm;
+    }
+
+    .bullets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6mm 8mm;
+      margin: 3mm 0 0;
+    }
+
+    .bullet {
+      font-size: 9.5px;
+      line-height: 1.4;
+      padding-left: 4mm;
+      position: relative;
+    }
+
+    .bullet:before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--yellow);
+      position: absolute;
+      left: 0;
+      top: 4px;
+    }
+
+    .domains {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm 8mm;
+      margin-top: 4mm;
+    }
+
+    .domain {
+      border-top: 1px solid var(--line);
+      padding-top: 2.2mm;
+    }
+
+    .domain h4 {
+      font-size: 9.5px;
+      margin: 0 0 1.4mm;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .domain p {
+      font-size: 9.2px;
+      line-height: 1.38;
+      margin: 0;
+    }
+
+    .tech-band {
+      margin-top: 4mm;
+      background: var(--ink);
+      color: #fff;
+      padding: 3mm 5mm;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    .tech-band strong {
+      color: var(--yellow)
+    }
+
+    /* PAGE 2 */
+    .page2 .content {
+      padding-top: 12mm
+    }
+
+    .page2-intro {
+      display: grid;
+      grid-template-columns: 1fr 54mm;
+      gap: 10mm;
+      align-items: start;
+      margin-bottom: 7mm;
+    }
+
+    .page2-intro h2 {
+      font-size: 34px;
+      line-height: .96;
+      letter-spacing: -.05em;
+      margin: 0;
+    }
+
+    .uxdx {
+      background: var(--yellow);
+      min-height: 39mm;
+      padding: 5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .uxdx strong {
+      font-size: 25px;
+      letter-spacing: -.06em;
+    }
+
+    .uxdx span {
+      font-size: 8px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .approach {
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 4mm 0 4.5mm;
+      display: grid;
+      grid-template-columns: 34mm 1fr;
+      gap: 8mm;
+      margin-bottom: 6.5mm;
+    }
+
+    .approach .label {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 700;
+    }
+
+    .approach p {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.5;
+      max-width: 128mm;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 2px solid var(--ink);
+      border-left: 1px solid var(--line);
+      margin-bottom: 7mm;
+    }
+
+    .skill {
+      min-height: 29mm;
+      padding: 5mm;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill .n {
+      font-size: 8px;
+      color: var(--muted);
+      margin-bottom: 6mm;
+      letter-spacing: .12em;
+    }
+
+    .skill h3 {
+      margin: 0 0 2mm;
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .skill p {
+      margin: 0;
+      font-size: 9.1px;
+      line-height: 1.4;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 10mm;
+      border-top: 2px solid var(--ink);
+      padding-top: 4.5mm;
+    }
+
+    .bottom-grid h3 {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin: 0 0 4mm;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 24mm 1fr;
+      gap: 4mm;
+      margin-bottom: 3.8mm;
+    }
+
+    .timeline-item .date {
+      font-size: 8px;
+      color: var(--muted);
+    }
+
+    .timeline-item strong {
+      font-size: 10px;
+      display: block;
+      margin-bottom: 1mm;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      font-size: 8.8px;
+      line-height: 1.4;
+    }
+
+    .lang {
+      display: grid;
+      grid-template-columns: 34mm 1fr;
+      gap: 4mm;
+      padding: 2mm 0;
+      border-top: 1px solid var(--line);
+      font-size: 9.2px;
+    }
+
+    .lang:first-of-type {
+      border-top: 0
+    }
+
+    .lang strong {
+      font-size: 10px
+    }
+
+    .footer-mark {
+      position: absolute;
+      right: 14mm;
+      bottom: 3.2mm;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--muted);
+    }
+
+    [data-lang] {
+      display: none
+    }
+
+    [data-lang].lang-active {
+      display: revert
+    }
+
+    @media(max-width:900px) {
+      body {
+        padding: 12px 0 40px
+      }
+
+      .toolbar {
+        top: 8px
+      }
+
+      .document {
+        transform-origin: top center;
+        width: 100%
+      }
+
+      .page {
+        transform: scale(calc((100vw - 24px) / 793.7));
+        transform-origin: top center;
+        margin-bottom: calc(-297mm + (297mm * ((100vw - 24px) / 793.7)) + 16px);
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+
+      html,
+      body {
+        background: #fff;
+        padding: 0
+      }
+
+      .toolbar {
+        display: none !important
+      }
+
+      .document {
+        width: auto;
+        margin: 0
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        break-after: auto;
+        page-break-after: auto
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important
+      }
+    }
+
+    /* v1.1 — fixed-A4 fit refinements */
+    .page:first-of-type .content {
+      padding-top: 12mm;
+      padding-bottom: 9mm;
+    }
+
+    .page:first-of-type .statement {
+      font-size: 25px;
+      line-height: 1.04;
+    }
+
+    .page:first-of-type .section__body p {
+      line-height: 1.42;
+    }
+
+    .page:first-of-type .domain p {
+      line-height: 1.31;
+    }
+
+    .page:first-of-type .tech-band {
+      line-height: 1.45;
+    }
+
+    .page2 .page2-intro {
+      margin-bottom: 7mm;
+    }
+
+    .page2 .skill .n {
+      margin-bottom: 4.5mm;
+    }
+
+    .page2 .bottom-grid {
+      gap: 9mm;
+    }
+
+    .footer-mark {
+      bottom: 3.2mm !important;
+      font-size: 6.8px !important;
+      line-height: 1 !important;
+      color: #9b988f !important;
+      pointer-events: none;
+    }
+
+    @media print {
+      .page {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar">
+    <div class="toolbar__meta">Alex Benfaremo - CV - 2026.2</div>
+    <div class="toolbar__actions">
+      <button class="btn-lang active" data-target="it">IT</button>
+      <button class="btn-lang" data-target="en">EN</button>
+      <button class="btn-print" onclick="window.print()">Save / Print PDF</button>
+    </div>
+  </div>
+
+  <main class="document">
+
+    <!-- PAGE 1 -->
+    <section class="page">
+      <div class="page-grid">
+        <aside class="rail">
+          <div class="dot"></div>
+          <div class="index">01 / 02</div>
+          <div class="vertical" data-lang="it">Esperienza · Architettura · Prodotto</div>
+          <div class="vertical" data-lang="en">Experience · Architecture · Product</div>
+        </aside>
+
+        <div class="content">
+          <div class="hero">
+            <div>
+              <div class="kicker">Curriculum Vitae / 2026</div>
+              <h1>ALEX<br>BENFAREMO</h1>
+
+              <div class="role">
+                Head of Frontend · Solution Architect · Technical Team Leader<br>
+                <span>Apio — Co-founder, Shareholder & Board Member</span>
+              </div>
+            </div>
+            <div class="badge">AB</div>
+          </div>
+
+          <div class="statement-wrap">
+            <div class="statement" data-lang="it">
+              Progetto <em>esperienze digitali</em> e architetture software partendo dallo stesso principio:
+              un buon sistema deve funzionare bene sia per chi lo usa, sia per chi lo costruisce.
+            </div>
+            <div class="statement" data-lang="en">
+              I design <em>digital experiences</em> and software architectures around the same principle:
+              a good system should work well both for the people using it and for the people building it.
+            </div>
+          </div>
+
+          <div class="meta-row">
+            <div><strong data-lang="it">Contatti</strong><strong
+                data-lang="en">Contact</strong>alexbenfaremo@apio.cc<br>+39 333 816 7845</div>
+            <div><strong>Base</strong>Pescara, Italy<br>linkedin.com/in/alexbenfaremo</div>
+            <div><strong data-lang="it">Focus attuale</strong><strong data-lang="en">Current focus</strong>Energy · B2B
+              Applications<br>UX · DX · Architecture</div>
+          </div>
+
+          <div class="section">
+            <div class="section__num">01<span data-lang="it">Profilo</span><span data-lang="en">Profile</span></div>
+            <div class="section__body">
+              <p data-lang="it">
+                Professionista software con oltre dieci anni di esperienza nella progettazione e realizzazione di
+                applicazioni B2B e sistemi digitali complessi. In Apio ricopro formalmente il ruolo di <strong>Head of
+                  Frontend</strong>, affiancando alla responsabilità sulle architetture frontend attività di analisi
+                funzionale e tecnica, solution architecture e coordinamento di team multidisciplinari.
+              </p>
+              <p data-lang="en">
+                Software professional with more than ten years of experience designing and building complex digital
+                products and B2B applications. At Apio, I formally serve as <strong>Head of Frontend</strong>, combining
+                frontend architecture ownership with functional and technical analysis, solution architecture and
+                technical leadership of multidisciplinary teams.
+              </p>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section__num">02<span>2022 — NOW</span></div>
+            <div class="section__body">
+              <div class="experience-head">
+                <h3>DANTE — Dynamic and Advanced NeTwork Efficiency</h3>
+                <div class="date">ARETI / ACEA GROUP</div>
+              </div>
+              <div class="subtitle">Technical Team Leader · Solution Architecture · Functional & Technical Analysis
+              </div>
+
+              <p data-lang="it">
+                DANTE è una piattaforma ADMS custom progettata sui processi operativi e sulle esigenze specifiche di
+                Areti per la gestione della rete elettrica di media e bassa tensione di Roma. All'interno dell'RTI
+                coordino un team di circa <strong>4–8 persone</strong>, lavorando a stretto contatto con gli altri Team
+                Leader e con gli stakeholder tecnici e funzionali.
+              </p>
+              <p data-lang="en">
+                DANTE is a custom ADMS platform designed around Areti's operational workflows and specific requirements
+                for managing Rome's medium- and low-voltage electricity distribution network. Within the consortium, I
+                coordinate a team typically ranging from <strong>4–8 people</strong>, working closely with other Team
+                Leaders and technical and functional stakeholders.
+              </p>
+
+              <div class="bullets" data-lang="it">
+                <div class="bullet">Analisi funzionale e tecnica con il cliente.</div>
+                <div class="bullet">Solution architecture con focus su data services e applicazioni user-facing.</div>
+                <div class="bullet">Ownership tecnica del dominio Topologia di rete.</div>
+                <div class="bullet">Architetture frontend complesse React / Next.js / TypeScript.</div>
+                <div class="bullet">Integrazione di dati statici, geografici e real-time.</div>
+                <div class="bullet">Workshop, review, demo e confronto diretto con utenti Areti.</div>
+              </div>
+
+              <div class="bullets" data-lang="en">
+                <div class="bullet">Functional and technical analysis with the customer.</div>
+                <div class="bullet">Solution architecture focused on data services and user-facing applications.</div>
+                <div class="bullet">Technical ownership of the Network Topology domain.</div>
+                <div class="bullet">Complex frontend architectures with React / Next.js / TypeScript.</div>
+                <div class="bullet">Integration of static, geographical and real-time data.</div>
+                <div class="bullet">Workshops, reviews, demos and direct collaboration with Areti users.</div>
+              </div>
+
+              <div class="domains">
+                <div class="domain">
+                  <h4 data-lang="it">Topologia di rete</h4>
+                  <h4 data-lang="en">Network Topology</h4>
+                  <p data-lang="it">Modellazione e navigazione della rete MT/BT tramite grafo Neo4j.</p>
+                  <p data-lang="en">MV/LV network modelling and navigation through a Neo4j graph.</p>
+                </div>
+                <div class="domain">
+                  <h4 data-lang="it">UI topologica & geografica</h4>
+                  <h4 data-lang="en">Topological & Geographic UI</h4>
+                  <p data-lang="it">Interfacce per l'esplorazione operativa della rete in forma topologica e geografica.
+                  </p>
+                  <p data-lang="en">Operational interfaces for topological and geographical network exploration.</p>
+                </div>
+                <div class="domain">
+                  <h4 data-lang="it">Eventi & operatività</h4>
+                  <h4 data-lang="en">Events & Operations</h4>
+                  <p data-lang="it">Flussi applicativi per eventi di rete, interruzioni e operatività.</p>
+                  <p data-lang="en">Application flows supporting network events, outages and operations.</p>
+                </div>
+                <div class="domain">
+                  <h4 data-lang="it">Integrazione di sistema</h4>
+                  <h4 data-lang="en">System Integration</h4>
+                  <p data-lang="it">Integrazione SCADA STM Siemens, GIS Areti e servizi dell'ecosistema applicativo.</p>
+                  <p data-lang="en">Integration with Siemens STM SCADA, Areti GIS and surrounding application services.
+                  </p>
+                </div>
+              </div>
+
+              <div class="tech-band">
+                <strong>STACK / CONTEXT</strong> &nbsp; React · Next.js · TypeScript · Node.js · Neo4j · PostgreSQL ·
+                MongoDB · Java / Quarkus · Go · Kubernetes · Microservices · REST APIs · SCADA · GIS
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark">Alex Benfaremo — CV</div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page page2">
+      <div class="page-grid">
+        <aside class="rail">
+          <div class="dot"></div>
+          <div class="index">02 / 02</div>
+          <div class="vertical" data-lang="it">UX × DX · Competenze · Formazione</div>
+          <div class="vertical" data-lang="en">UX × DX · Skills · Education</div>
+        </aside>
+
+        <div class="content">
+          <div class="page2-intro">
+            <div>
+              <div class="kicker" data-lang="it">Progettare il sistema dietro l'interfaccia</div>
+              <div class="kicker" data-lang="en">Designing the system behind the interface</div>
+              <h2 data-lang="it">L'esperienza non finisce davanti allo schermo.</h2>
+              <h2 data-lang="en">Experience does not stop at the screen.</h2>
+            </div>
+            <div class="uxdx">
+              <strong>UX × DX</strong>
+              <span data-lang="it">Usabilità per chi lavora.<br>Qualità per chi costruisce.</span>
+              <span data-lang="en">Usability for those who work.<br>Quality for those who build.</span>
+            </div>
+          </div>
+
+          <div class="approach">
+            <div class="label" data-lang="it">Approccio</div>
+            <div class="label" data-lang="en">Approach</div>
+            <p data-lang="it">
+              Per me un software B2B è un ambiente in cui una persona trascorre parte della propria giornata lavorativa.
+              Per questo considero la User Experience una responsabilità architetturale, non uno strato aggiunto alla
+              fine. Allo stesso modo, una buona Developer Experience riduce complessità, debito tecnico e attrito nel
+              team.
+            </p>
+            <p data-lang="en">
+              I see B2B software as an environment where someone spends part of their working day. For this reason, I
+              consider User Experience an architectural responsibility rather than a layer added at the end. At the same
+              time, a strong Developer Experience reduces complexity, technical debt and friction within the team.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill">
+              <div class="n">01</div>
+              <h3>Software & Solution Architecture</h3>
+              <p data-lang="it">Architetture frontend, applicazioni distribuite, microservizi, API design, system
+                integration e data services.</p>
+              <p data-lang="en">Frontend architecture, distributed applications, microservices, API design, system
+                integration and data services.</p>
+            </div>
+            <div class="skill">
+              <div class="n">02</div>
+              <h3>Frontend Engineering</h3>
+              <p data-lang="it">React, Next.js, TypeScript, JavaScript, Node.js, architetture a componenti, design
+                system e performance.</p>
+              <p data-lang="en">React, Next.js, TypeScript, JavaScript, Node.js, component architectures, design systems
+                and performance.</p>
+            </div>
+            <div class="skill">
+              <div class="n">03</div>
+              <h3>Data & Infrastructure</h3>
+              <p data-lang="it">Neo4j, PostgreSQL, MongoDB, Kubernetes e ambienti containerizzati.</p>
+              <p data-lang="en">Neo4j, PostgreSQL, MongoDB, Kubernetes and containerized environments.</p>
+            </div>
+            <div class="skill">
+              <div class="n">04</div>
+              <h3>Energy & Utility Systems</h3>
+              <p data-lang="it">ADMS, topologia di rete, integrazione SCADA, integrazione GIS e interfacce operative
+                real-time.</p>
+              <p data-lang="en">ADMS, network topology, SCADA integration, GIS integration and real-time operational
+                interfaces.</p>
+            </div>
+            <div class="skill">
+              <div class="n">05</div>
+              <h3>Leadership & Delivery</h3>
+              <p data-lang="it">Leadership tecnica, coordinamento del team, raccolta requisiti, stakeholder management e
+                architecture review.</p>
+              <p data-lang="en">Technical leadership, team coordination, requirements gathering, stakeholder management
+                and architecture reviews.</p>
+            </div>
+            <div class="skill">
+              <div class="n">06</div>
+              <h3>Product & Experience</h3>
+              <p data-lang="it">UX architecture, applicazioni B2B, Developer Experience, interaction design e
+                information architecture.</p>
+              <p data-lang="en">UX architecture, B2B applications, Developer Experience, interaction design and
+                information architecture.</p>
+            </div>
+          </div>
+
+          <div class="bottom-grid">
+            <div>
+              <h3 data-lang="it">Esperienza & formazione</h3>
+              <h3 data-lang="en">Experience & education</h3>
+
+              <div class="timeline-item">
+                <div class="date">2015 — NOW</div>
+                <div>
+                  <strong>Apio — Head of Frontend</strong>
+                  <p data-lang="it">Co-founder, socio di minoranza e membro del CdA. Direzione tecnica frontend e
+                    supporto architetturale su prodotti e progetti digitali B2B.</p>
+                  <p data-lang="en">Co-founder, minority shareholder and Board Member. Frontend technical direction and
+                    architectural support across B2B products and digital projects.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="date">2010 — 2014</div>
+                <div>
+                  <strong>Università Politecnica delle Marche</strong>
+                  <p data-lang="it">Studi in Ingegneria Informatica e dell'Automazione, interrotti prima della laurea
+                    per dedicarmi ad Apio.</p>
+                  <p data-lang="en">Computer and Automation Engineering studies, discontinued before graduation to focus
+                    full-time on Apio.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="date">2005 — 2010</div>
+                <div>
+                  <strong>ITIS “Montani” — Fermo</strong>
+                  <p data-lang="it">Perito Industriale — Elettrotecnica e Automazione · 91/100.</p>
+                  <p data-lang="en">Technical Diploma — Electrical Engineering & Automation · 91/100.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 data-lang="it">Lingue</h3>
+              <h3 data-lang="en">Languages</h3>
+
+              <div class="lang"><strong data-lang="it">Italiano</strong><strong data-lang="en">Italian</strong><span
+                  data-lang="it">Madrelingua</span><span data-lang="en">Native</span></div>
+              <div class="lang"><strong data-lang="it">Inglese</strong><strong
+                  data-lang="en">English</strong><span>Professional working proficiency</span></div>
+
+              <h3 style="margin-top:10mm" data-lang="it">Principi</h3>
+              <h3 style="margin-top:10mm" data-lang="en">Principles</h3>
+              <div class="lang"><strong>01</strong><span data-lang="it">Usabilità</span><span
+                  data-lang="en">Usability</span></div>
+              <div class="lang"><strong>02</strong><span data-lang="it">Flessibilità</span><span
+                  data-lang="en">Flexibility</span></div>
+              <div class="lang"><strong>03</strong><span data-lang="it">Manutenibilità</span><span
+                  data-lang="en">Maintainability</span></div>
+              <div class="lang"><strong>04</strong><span data-lang="it">Velocità di sviluppo</span><span
+                  data-lang="en">Development velocity</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark">alexbenfaremo@apio.cc</div>
+    </section>
+  </main>
+
+  <script>
+    const langButtons = document.querySelectorAll('.btn-lang');
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('lang-active', el.dataset.lang === lang);
+      });
+
+      langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.target === lang);
+      });
+    }
+
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.target));
+    });
+
+    setLang('it');
+  </script>
+</body>
+
+</html>
