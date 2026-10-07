@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Benfaremo - CV - 2026.2</title>
+  <title>Alex Benfaremo - CV - 2026.3</title>
   <style>
     :root {
       --yellow: #FFD21C;
@@ -204,11 +204,11 @@
     }
 
     .statement-wrap {
-      min-height: 46mm;
+      min-height: 40mm;
       display: flex;
       align-items: center;
-      margin-top: 4mm;
-      margin-bottom: 5mm;
+      /* margin-top:4mm; */
+      /* margin-bottom:5mm; */
       position: relative;
     }
 
@@ -536,10 +536,12 @@
       position: absolute;
       right: 14mm;
       bottom: 3.2mm;
-      font-size: 8px;
+      font-size: 6.8px;
+      line-height: 1;
       text-transform: uppercase;
       letter-spacing: .18em;
-      color: var(--muted);
+      color: #9b988f;
+      pointer-events: none;
     }
 
     [data-lang] {
@@ -646,14 +648,6 @@
       gap: 9mm;
     }
 
-    .footer-mark {
-      bottom: 3.2mm !important;
-      font-size: 6.8px !important;
-      line-height: 1 !important;
-      color: #9b988f !important;
-      pointer-events: none;
-    }
-
     @media print {
       .page {
         width: 210mm !important;
@@ -663,16 +657,64 @@
         overflow: hidden !important;
       }
     }
+
+
+    /* v1.4.1 — project/client semantics */
+    .section__num>span {
+      display: block
+    }
+
+    .section__num>span[data-lang] {
+      margin-top: 2mm
+    }
+
+    .section__num>span+span:not([data-lang]) {
+      margin-top: 3mm
+    }
+
+    .experience-head--project {
+      grid-template-columns: minmax(0, 1fr) 44mm;
+      align-items: start;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 3mm;
+      padding-top: .5mm;
+      font-size: 8px;
+      line-height: 1.25;
+    }
+
+    .project-meta>div {
+      border-top: 1px solid var(--line);
+      padding-top: 1.6mm;
+    }
+
+    .project-meta__label {
+      display: block;
+      margin-bottom: .7mm;
+      color: var(--muted);
+      font-size: 6.8px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .project-meta strong {
+      display: block;
+      font-size: 8.2px;
+      line-height: 1.25;
+    }
   </style>
 </head>
 
 <body>
   <div class="toolbar">
-    <div class="toolbar__meta">Alex Benfaremo - CV - 2026.2</div>
+    <div class="toolbar__meta">Alex Benfaremo - CV - 2026.3</div>
     <div class="toolbar__actions">
-      <button class="btn-lang active" data-target="it">IT</button>
-      <button class="btn-lang" data-target="en">EN</button>
-      <button class="btn-print" onclick="window.print()">Save / Print PDF</button>
+      <button class="btn-lang active" data-target="it" type="button">IT</button>
+      <button class="btn-lang" data-target="en" type="button">EN</button>
+      <button class="btn-print" onclick="window.print()" type="button">Save / Print PDF</button>
     </div>
   </div>
 
@@ -681,7 +723,7 @@
     <!-- PAGE 1 -->
     <section class="page">
       <div class="page-grid">
-        <aside class="rail">
+        <aside class="rail" aria-label="Page 1">
           <div class="dot"></div>
           <div class="index">01 / 02</div>
           <div class="vertical" data-lang="it">Esperienza · Architettura · Prodotto</div>
@@ -740,26 +782,46 @@
           </div>
 
           <div class="section">
-            <div class="section__num">02<span>2022 — NOW</span></div>
+            <div class="section__num">02
+              <span data-lang="it">Progetto cliente</span>
+              <span data-lang="en">Client project</span>
+              <span>2022 — NOW</span>
+            </div>
             <div class="section__body">
-              <div class="experience-head">
+              <div class="experience-head experience-head--project">
                 <h3>DANTE — Dynamic and Advanced NeTwork Efficiency</h3>
-                <div class="date">ARETI / ACEA GROUP</div>
+                <div class="project-meta">
+                  <div>
+                    <span class="project-meta__label" data-lang="it">Cliente</span>
+                    <span class="project-meta__label" data-lang="en">Client</span>
+                    <strong>Areti — Acea Group</strong>
+                  </div>
+                  <div>
+                    <span class="project-meta__label">Delivery</span>
+                    <strong>Apio · RTI</strong>
+                  </div>
+                </div>
               </div>
               <div class="subtitle">Technical Team Leader · Solution Architecture · Functional & Technical Analysis
               </div>
 
               <p data-lang="it">
-                DANTE è una piattaforma ADMS custom progettata sui processi operativi e sulle esigenze specifiche di
-                Areti per la gestione della rete elettrica di media e bassa tensione di Roma. All'interno dell'RTI
-                coordino un team di circa <strong>4–8 persone</strong>, lavorando a stretto contatto con gli altri Team
-                Leader e con gli stakeholder tecnici e funzionali.
+                Per Apio lavoro dal 2022 sul progetto DANTE, all’interno dell’RTI incaricato da Areti della
+                realizzazione della piattaforma. Nel progetto ricopro il ruolo di Technical Team Leader e contribuisco
+                alla solution architecture, all’analisi funzionale e tecnica e al coordinamento dello sviluppo del mio
+                dominio. DANTE è una piattaforma ADMS custom progettata sui processi operativi e sulle esigenze
+                specifiche di Areti per la gestione della rete elettrica MT/BT di Roma. Coordino un team di circa
+                <strong>4–8 persone</strong>, in collaborazione con gli altri Team Leader e con gli stakeholder tecnici
+                e funzionali.
               </p>
               <p data-lang="en">
-                DANTE is a custom ADMS platform designed around Areti's operational workflows and specific requirements
-                for managing Rome's medium- and low-voltage electricity distribution network. Within the consortium, I
-                coordinate a team typically ranging from <strong>4–8 people</strong>, working closely with other Team
-                Leaders and technical and functional stakeholders.
+                Since 2022, I have been working on the DANTE project on behalf of Apio, as part of the consortium
+                delivering the platform for Areti. Within the project, I serve as Technical Team Leader and contribute
+                to solution architecture, functional and technical analysis, and development coordination within my
+                domain. DANTE is a custom ADMS platform designed around Areti's operational workflows and specific
+                requirements for managing Rome's MV/LV electricity distribution network. I coordinate a team typically
+                ranging from <strong>4–8 people</strong>, working closely with other Team Leaders and technical and
+                functional stakeholders.
               </p>
 
               <div class="bullets" data-lang="it">
@@ -823,7 +885,7 @@
     <!-- PAGE 2 -->
     <section class="page page2">
       <div class="page-grid">
-        <aside class="rail">
+        <aside class="rail" aria-label="Page 2">
           <div class="dot"></div>
           <div class="index">02 / 02</div>
           <div class="vertical" data-lang="it">UX × DX · Competenze · Formazione</div>
@@ -920,9 +982,11 @@
                 <div>
                   <strong>Apio — Head of Frontend</strong>
                   <p data-lang="it">Co-founder, socio di minoranza e membro del CdA. Direzione tecnica frontend e
-                    supporto architetturale su prodotti e progetti digitali B2B.</p>
+                    supporto architetturale su prodotti e progetti digitali B2B; dal 2022 il focus principale è il
+                    programma DANTE per Areti.</p>
                   <p data-lang="en">Co-founder, minority shareholder and Board Member. Frontend technical direction and
-                    architectural support across B2B products and digital projects.</p>
+                    architectural support across B2B products and digital projects; since 2022, my primary engagement
+                    has been the DANTE programme for Areti.</p>
                 </div>
               </div>
 
